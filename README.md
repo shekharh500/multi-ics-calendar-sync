@@ -18,6 +18,23 @@ Automatically sync multiple ICS calendar feeds into your Google Calendar. This s
 - Syncs events from today onwards (past events ignored)
 - Requires publicly accessible ICS feed URLs
 
+## How It Works
+
+### System Flow
+![Calendar Sync Flow](https://raw.githubusercontent.com/shekharh500/multi-ics-calendar-sync/main/Diagram1.png)
+
+### Sync Process
+![Sync Process Diagram](https://raw.githubusercontent.com/shekharh500/multi-ics-calendar-sync/main/Diagram2.png)
+
+1. **Fetches** each ICS feed URL
+2. **Parses** event data (UID, dates, titles)
+3. **Creates** new events in your Google Calendar with:
+   - Color coding
+   - Title prefixes
+   - Tracking information in description
+4. **Tracks** synced events using UIDs
+5. **Removes** events that no longer exist in the source feed
+
 ## Setup Instructions
 
 ### Step 1: Get Your ICS Feed URLs
