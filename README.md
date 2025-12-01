@@ -21,10 +21,10 @@ Automatically sync multiple ICS calendar feeds into your Google Calendar. This s
 ## How It Works
 
 ### System Flow
-![Calendar Sync Flow](https://raw.githubusercontent.com/shekharh500/multi-ics-calendar-sync/main/Diagram1.png)
+![Calendar Sync Flow](Diagram1.png)
 
 ### Sync Process
-![Sync Process Diagram](https://raw.githubusercontent.com/shekharh500/multi-ics-calendar-sync/main/Diagram2.png)
+![Sync Process Diagram](Diagram2.png)
 
 1. **Fetches** each ICS feed URL
 2. **Parses** event data (UID, dates, titles)
@@ -66,18 +66,30 @@ In the script, find the `ICS_FEEDS` section and replace with your details:
 ```javascript
 const ICS_FEEDS = [
   {
-    name: 'WORK_CALENDAR',                    // Unique name for this feed
-    url: 'https://your-ics-feed-url.ics',     // Your ICS feed URL
-    color: CalendarApp.EventColor.ORANGE,     // Event color in your calendar
-    titlePrefix: 'Work '                       // Prefix added to event titles
+    name: 'WORK_OUTLOOK',                              // Internal identifier (must be unique)
+    url: 'https://outlook.office365.com/owa/calendar/YOUR_CALENDAR_ID@company.com/YOUR_SECRET_TOKEN/calendar.ics',
+    color: CalendarApp.EventColor.ORANGE,              // Orange for work events
+    titlePrefix: 'Work '                               // Prefix shown before event title
   },
   {
-    name: 'PERSONAL_CALENDAR',
-    url: 'https://another-feed-url.ics',
-    color: CalendarApp.EventColor.BLUE,
+    name: 'TEAM_CALENDAR',
+    url: 'https://outlook.office365.com/owa/calendar/TEAM_CALENDAR_ID@company.com/TEAM_SECRET_TOKEN/calendar.ics',
+    color: CalendarApp.EventColor.BLUE,                // Blue for team events
+    titlePrefix: 'Team '
+  },
+  {
+    name: 'PERSONAL_GOOGLE',
+    url: 'https://calendar.google.com/calendar/ical/your.email%40gmail.com/public/basic.ics',
+    color: CalendarApp.EventColor.RED,                 // Red for personal events
     titlePrefix: 'Personal '
+  },
+  {
+    name: 'PRIVATE_CALENDAR',
+    url: 'https://calendar.google.com/calendar/ical/another.email%40gmail.com/private-YOUR_PRIVATE_TOKEN/basic.ics',
+    color: CalendarApp.EventColor.GREEN,               // Green for private events
+    titlePrefix: 'Private '
   }
-  // Add more feeds as needed
+  // Add more feeds by copying the object structure above
 ];
 ```
 
